@@ -11,7 +11,7 @@ import UIKit
 class PageVC: UIPageViewController {
 
     var currentPage = 0
-    var locationsArray = ["Local City", "Sydney, Australia", "Accra, Ghana", "Uglich, Russia"]
+    var locationsArray = ["Local City", "Chestnut Hill, MA", "Sydney, Australia", "Accra, Ghana", "Uglich, Russia"]
     var pageControl: UIPageControl!
     var listButton: UIButton!
     var barButtonWidth: CGFloat = 44
@@ -43,6 +43,7 @@ class PageVC: UIPageViewController {
         pageControl.currentPageIndicatorTintColor = UIColor.black
         pageControl.numberOfPages = locationsArray.count
         pageControl.currentPage = currentPage
+        pageControl.addTarget(self, action: #selector(pageControlPressed), for: .touchUpInside)
         view.addSubview(pageControl)
     }
     
@@ -114,6 +115,17 @@ extension PageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let currentViewController = pageViewController.viewControllers?[0] as? DetailVC {
             pageControl.currentPage = currentViewController.currentPage
+        }
+    }
+    
+    @objc func pageControlPressed() {
+        if let currentViewController = self.viewControllers?[0] as? DetailVC {
+            currentPage = currentViewController.currentPage
+        }
+        if pageControl.currentPage < currentPage {
+            setViewControllers([createDetailVC(forPage: pageControl.currentPage)], direction: .reverse, animated: true, completion: nil)
+        } else if pageControl.currentPage > currentPage {
+            setViewControllers([createDetailVC(forPage: pageControl.currentPage)], direction: .forward, animated: true, completion: nil)
         }
     }
 }
