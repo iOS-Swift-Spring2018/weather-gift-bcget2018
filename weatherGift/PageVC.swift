@@ -21,6 +21,7 @@ class PageVC: UIPageViewController {
         super.viewDidLoad()
         delegate = self
         dataSource = self
+        
         setViewControllers([createDetailVC(forPage: 0)], direction: .forward, animated: false, completion: nil)
     }
     
@@ -54,6 +55,7 @@ class PageVC: UIPageViewController {
         listButton.addTarget(self, action: #selector(segueToListVC), for: .touchUpInside)
         view.addSubview(listButton)
     }
+    
     //Mark:- Segues Here
     @objc func segueToListVC() {
         performSegue(withIdentifier: "ToListVC", sender: nil)
