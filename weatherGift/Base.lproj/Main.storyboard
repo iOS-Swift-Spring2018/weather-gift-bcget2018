@@ -131,7 +131,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="grc-Xj-T58"/>
-                                    <barButtonItem systemItem="add" id="FYn-eC-TXT"/>
+                                    <barButtonItem systemItem="add" id="FYn-eC-TXT">
+                                        <connections>
+                                            <action selector="addBarButtonPressed:" destination="PDx-nz-lbs" id="MPQ-BV-5an"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
