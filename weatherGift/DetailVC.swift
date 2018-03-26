@@ -24,7 +24,11 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUserInterface()
+        if currentPage != 0 {
+            self.locationsArray[currentPage].getWeather {
+                self.updateUserInterface()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,14 +41,14 @@ class DetailVC: UIViewController {
     func updateUserInterface() {
         locationLabel.text = locationsArray[currentPage].name
         dateLabel.text = locationsArray[currentPage].coordinates
+        tempLabel.text = locationsArray[currentPage].currentTemp
+        summaryLabel.text = locationsArray[currentPage].currentSummary
     }
 }
 extension DetailVC: CLLocationManagerDelegate {
     func getLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        let status = CLLocationManager.authorizationStatus()
-        handleLocationAuthorizationStatus(status: status)
     }
     
     func handleLocationAuthorizationStatus(status: CLAuthorizationStatus) {
@@ -70,23 +74,25 @@ extension DetailVC: CLLocationManagerDelegate {
         currentLocation = locations.last
         let currentLatitude = currentLocation.coordinate.latitude
         let currentLongitude = currentLocation.coordinate.longitude
-        let currentCoordinates = "\(currentLatitude), \(currentLongitude)"
-        print(currentCoordinates)
+        let currentCoordinates = "\(currentLatitude),\(currentLongitude)"
         dateLabel.text = currentCoordinates
-        geoCoder.reverseGeocodeLocation(currentLocation, completionHandler:
-            {placemarks, Error in
-                if placemarks != nil {
-                    let placemark = placemarks?.last
-                    place = (placemark?.name)!
-                } else {
-                    print("error optional")
-                    place = "Unknown Weather Location"
-                }
-                self.locationsArray[0].name = place
-                self.locationsArray[0].coordinates = currentCoordinates
+        geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {placemarks,
+            error in
+            if placemarks != nil {
+                let placemark = placemarks?.last
+                place = (placemark?.name)!
+            } else {
+                print("error optional")
+                place = "Unknown Weather Location"
+            }
+            self.locationsArray[0].name = place
+            self.locationsArray[0].coordinates = currentCoordinates
+            self.locationsArray[0].getWeather {
                 self.updateUserInterface()
+            }
         })
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get user location")
     }

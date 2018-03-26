@@ -16,6 +16,7 @@
 		715CD02820600AD7002AE26D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715CD02720600AD7002AE26D /* DetailVC.swift */; };
 		715CD02A20600DA2002AE26D /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715CD02920600DA2002AE26D /* ListVC.swift */; };
 		715CD02C20600FD3002AE26D /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715CD02B20600FD3002AE26D /* PageVC.swift */; };
+		71A9372C206930F300674AC5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A9372B206930F300674AC5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		715CD02720600AD7002AE26D /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		715CD02920600DA2002AE26D /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		715CD02B20600FD3002AE26D /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		71A9372B206930F300674AC5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A2FD840039A0D7F010D13253 /* Pods_weatherGift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatherGift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B797C99C40A2CDB24E6B0E19 /* Pods-weatherGift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherGift.release.xcconfig"; path = "Pods/Target Support Files/Pods-weatherGift/Pods-weatherGift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				715CD01520600A76002AE26D /* AppDelegate.swift */,
 				715A01CE2068474D006D0689 /* WeatherLocation.swift */,
 				715CD02B20600FD3002AE26D /* PageVC.swift */,
+				71A9372B206930F300674AC5 /* Constants.swift */,
 				715CD02720600AD7002AE26D /* DetailVC.swift */,
 				715CD02920600DA2002AE26D /* ListVC.swift */,
 				715CD01920600A76002AE26D /* Main.storyboard */,
@@ -240,6 +243,7 @@
 				715CD02C20600FD3002AE26D /* PageVC.swift in Sources */,
 				715CD01620600A76002AE26D /* AppDelegate.swift in Sources */,
 				715CD02820600AD7002AE26D /* DetailVC.swift in Sources */,
+				71A9372C206930F300674AC5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
